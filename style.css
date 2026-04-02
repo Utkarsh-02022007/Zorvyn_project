@@ -1,0 +1,354 @@
+/* Global reset and box model settings */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Base typography */
+body {
+  font-family: var(--font-sans);
+}
+
+/* Main app layout containers */
+#app {
+  display: flex;
+  min-height: 600px;
+  background: var(--color-background-tertiary);
+}
+/* Left side navigation panel */
+#sidebar {
+  width: 200px;
+  min-width: 200px;
+  background: var(--color-background-primary);
+  border-right: 0.5px solid var(--color-border-tertiary);
+  padding: 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+  .logo { padding: 0 1.25rem 1rem; 
+    font-size: 15px; 
+    font-weight: 500; 
+    color: var(--color-text-primary); 
+    border-bottom: 0.5px solid var(--color-border-tertiary); 
+    margin-bottom: 8px;
+ }
+  .nav-item { display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    padding: 9px 1.25rem; 
+    font-size: 13px; 
+    color: var(--color-text-secondary); 
+    cursor: pointer; 
+    border-left: 2px solid transparent; 
+    transition: all 0.15s;
+ }
+  .nav-item:hover { 
+    background: var(--color-background-secondary); 
+    color: var(--color-text-primary); 
+}
+  .nav-item.active {
+     color: var(--color-text-primary); 
+    background: var(--color-background-secondary); 
+    border-left-color: #378ADD; 
+    font-weight: 500;
+ }
+  .nav-icon { font-size: 14px; }
+  #main { flex: 1; 
+    overflow-y: auto; }
+
+  .topbar { display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+     padding: 14px 1.5rem; 
+     background: var(--color-background-primary); 
+     border-bottom: 0.5px solid var(--color-border-tertiary); }
+
+  .topbar-title { font-size: 15px;
+     font-weight: 500; 
+     color: var(--color-text-primary); }
+
+  .role-wrap { display: flex; 
+    align-items: center; 
+    gap: 8px; font-size: 12px; 
+    color: var(--color-text-secondary); 
+}
+
+  .role-wrap select { 
+    font-size: 12px; 
+    padding: 4px 8px; 
+    border-radius: var(--border-radius-md); 
+}
+  .content { padding: 1.5rem; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.25rem; 
+}
+
+/* Overview cards grid */
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 12px;
+}
+
+/* Small metric info cards */
+.metric-card {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 1rem;
+}
+  .metric-label { font-size: 11px; 
+    color: var(--color-text-secondary); 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    margin-bottom: 6px; 
+}
+
+
+  .metric-value { font-size: 22px; 
+    font-weight: 500; 
+    color: var(--color-text-primary);
+ }
+
+  .metric-sub { font-size: 11px; 
+    margin-top: 4px;
+ }
+  .metric-sub.up { color: #1D9E75;
+ }
+  .metric-sub.down { color: #D85A30; 
+}
+
+  .charts-row { display: grid;
+     grid-template-columns: 1.6fr 1fr;
+      gap: 12px;
+     }
+
+/* Card panels used for charts and lists */
+.panel {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem;
+}
+
+/* Panel header (title + controls) */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+  .panel-title { 
+    font-size: 13px; 
+    font-weight: 500; 
+    color: var(--color-text-primary); 
+}
+  .panel-sub { 
+    font-size: 11px;
+     color: var(--color-text-secondary);
+     }
+  .chart-wrap { 
+    position: relative;
+     width: 100%; 
+    }
+  .txn-controls { 
+    display: flex; 
+    gap: 8px; margin-bottom: 1rem; 
+    flex-wrap: wrap; 
+}
+  .txn-controls input, .txn-controls select { font-size: 12px; 
+    padding: 6px 10px; 
+    border-radius: var(--border-radius-md); 
+    min-width: 0; 
+}
+
+  .txn-controls input { 
+    flex: 1;
+     min-width: 120px;
+ }
+
+  table { 
+    width: 100%; 
+    font-size: 12px;
+     border-collapse: collapse; }
+
+  th { 
+    font-size: 11px; 
+    color: var(--color-text-secondary); 
+    font-weight: 500; 
+    padding: 6px 8px; 
+    text-align: left; 
+    border-bottom: 0.5px solid var(--color-border-tertiary); 
+    cursor: pointer; 
+    user-select: none; }
+  th:hover {
+     color: var(--color-text-primary); 
+}
+  td {
+     padding: 9px 8px;
+     border-bottom: 0.5px solid var(--color-border-tertiary); 
+    color: var(--color-text-primary);
+ }
+  tr:last-child td { 
+    border-bottom: none; 
+}
+  tr:hover td {
+     background: var(--color-background-secondary); 
+}
+  .badge { 
+    display: inline-block;
+     font-size: 10px; 
+    padding: 2px 7px;
+     border-radius: 99px; 
+    font-weight: 500; 
+}
+  .badge-income {
+     background: #E1F5EE; 
+    color: #0F6E56;
+ }
+  .badge-expense { background: #FAECE7;
+     color: #993C1D;
+ }
+  .amt-income { color: #1D9E75; 
+    font-weight: 500; 
+}
+  .amt-expense { color: #D85A30; 
+    font-weight: 500;
+ }
+  .insights-row { display: grid; 
+    grid-template-columns: repeat(3, minmax(0,1fr)); 
+    gap: 12px;
+ }
+  .insight-card { background: var(--color-background-primary); 
+    border: 0.5px solid var(--color-border-tertiary); 
+    border-radius: var(--border-radius-lg); 
+    padding: 1rem;
+ }
+  .insight-label { font-size: 11px; 
+    color: var(--color-text-secondary);
+     margin-bottom: 6px;
+ }
+  .insight-val { font-size: 18px; 
+    font-weight: 500; 
+    color: var(--color-text-primary); 
+    margin-bottom: 4px; 
+}
+  .insight-note { font-size: 11px; 
+    color: var(--color-text-secondary); 
+}
+  .add-btn { font-size: 12px; 
+    padding: 6px 12px; 
+    border-radius: var(--border-radius-md); 
+    background: #378ADD; 
+    color: #fff; 
+    border: none; 
+    cursor: pointer; }
+  .add-btn:hover { 
+    background: #185FA5; 
+}
+  .section-title { font-size: 13px; 
+    font-weight: 500; 
+    color: var(--color-text-primary); 
+    margin-bottom: 0;
+ }
+
+  .legend { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 12px; 
+    margin-top: 10px; 
+}
+  .leg-item { 
+    display: flex;
+     align-items: center; 
+    gap: 4px; font-size: 11px; 
+    color: var(--color-text-secondary); 
+}
+  .leg-dot {
+     width: 10px; 
+    height: 10px; 
+    border-radius: 2px;
+ }
+  .empty {
+     text-align: center; 
+    padding: 2rem; 
+    color: var(--color-text-secondary); 
+    font-size: 13px;
+ }
+/* Full-screen modal background overlay */
+.modal-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+/* When open, show modal overlay */
+.modal-bg.open {
+  display: flex;
+}
+  .modal { 
+    background: var(--color-background-primary); 
+    border-radius: 
+    var(--border-radius-lg); 
+    padding: 1.5rem; 
+    width: 320px; 
+    border: 0.5px solid var(--color-border-tertiary); 
+}
+  .modal h3 { 
+    font-size: 14px; 
+    font-weight: 500; 
+    margin-bottom: 1rem; 
+}
+  .modal label {
+     font-size: 12px; 
+    color: var(--color-text-secondary); 
+    display: block; 
+    margin-bottom: 4px; 
+    margin-top: 10px; }
+  .modal input, .modal select { 
+    width: 100%; 
+    font-size: 13px; 
+    padding: 7px 10px;
+     border-radius: var(--border-radius-md);
+ }
+  .modal-btns { 
+    display: flex; 
+    gap: 8px; 
+    margin-top: 1.25rem; 
+    justify-content: flex-end; 
+}
+  .modal-btns button { 
+    font-size: 12px; 
+    padding: 7px 14px; 
+    border-radius: var(--border-radius-md); 
+    cursor: pointer; 
+
+}
+  .btn-cancel { 
+    background: none; 
+    border: 0.5px solid var(--color-border-secondary); 
+    color: var(--color-text-secondary);
+ }
+  .btn-save { background: #378ADD; 
+    color: #fff; border: none; 
+}
+  .progress-bar { height: 6px;
+     background: var(--color-background-secondary); 
+    border-radius: 99px; overflow: hidden; 
+    margin-top: 4px; 
+}
+  .progress-fill {
+     height: 100%; 
+    border-radius: 99px; 
+}
+/* Responsive layout for smaller screens */
+@media (max-width: 700px) {
+  #sidebar { display: none; }
+  .cards-row { grid-template-columns: repeat(2, 1fr); }
+  .charts-row { grid-template-columns: 1fr; }
+  .insights-row { grid-template-columns: 1fr 1fr; }
+}
+

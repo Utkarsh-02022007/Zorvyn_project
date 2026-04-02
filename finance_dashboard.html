@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+  <div id="sidebar">
+    <div class="logo">FinTrack</div>
+    <div class="nav-item active" onclick="showSection('overview')"><span class="nav-icon">▣</span> Overview</div>
+    <div class="nav-item" onclick="showSection('transactions')"><span class="nav-icon">≡</span> Transactions</div>
+    <div class="nav-item" onclick="showSection('insights')"><span class="nav-icon">◈</span> Insights</div>
+  </div>
+  <div id="main">
+    <div class="topbar">
+      <span class="topbar-title" id="page-title">Overview</span>
+      <div class="role-wrap">
+        <span>Role:</span>
+        <select id="role-select" onchange="changeRole(this.value)">
+          <option value="viewer">Viewer</option>
+          <option value="admin" selected>Admin</option>
+        </select>
+      </div>
+    </div>
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <h3 id="modal-title">Add transaction</h3>
+    <label>Description</label>
+    <input id="m-desc" placeholder="e.g. Grocery shopping" />
+    <label>Amount ($)</label>
+    <input id="m-amount" type="number" placeholder="0.00" min="0" step="0.01" />
+    <label>Category</label>
+    <select id="m-cat">
+      <option>Food</option><option>Transport</option><option>Housing</option>
+      <option>Entertainment</option><option>Health</option><option>Shopping</option><option>Salary</option><option>Freelance</option><option>Other</option>
+    </select>
+    <label>Type</label>
+    <select id="m-type"><option value="expense">Expense</option><option value="income">Income</option></select>
+    <label>Date</label>
+    <input id="m-date" type="date" />
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveTransaction()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="logic.js"></script>
+
+</body>
+</html>
+
